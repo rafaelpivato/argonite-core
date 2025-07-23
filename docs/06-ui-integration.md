@@ -2,7 +2,7 @@
 
 This document describes how UI packages connect to Argonite core.
 
-## React Integration (`argonite-react`)
+## React Integration (`@argonite/ui-react`)
 
 - **Provider**: `<ArgoniteProvider>` sets up messaging and storage context.
 - **Hooks**:
@@ -10,7 +10,7 @@ This document describes how UI packages connect to Argonite core.
   - `useStore<T>(key: string)`: subscribe to a storage store.
 - **Mount Helpers**: automatically invoke entry `.mount(container)` in React roots.
 
-## Vue Integration (`argonite-vue`)
+## Vue Integration (`@argonite/ui-vue`)
 
 - **Plugin**: `app.use(ArgonitePlugin)` sets up global services.
 - **Composables**:

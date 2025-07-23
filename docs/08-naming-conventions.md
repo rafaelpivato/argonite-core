@@ -2,8 +2,8 @@
 
 ## Packages
 
-- `argonite-core`
-- `argonite-react`, `argonite-vue`, `argonite-cli`
+- `@argonite/core`
+- `@argonite/ui-react`, `@argonite/ui-vue`, `@argonite/cli`
 
 ## Files & Classes
 

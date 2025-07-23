@@ -21,4 +21,4 @@ This document outlines the core concepts and architecture of an Argonite extensi
   - Handles manifest wiring and runtime mounting.
 
 - **UI Integration Layer**  
-  - Separate packages (`argonite-react`, `argonite-vue`) provide framework-specific mounting and hooks.
+  - Separate packages (`@argonite/ui-react`, `@argonite/ui-vue`) provide framework-specific mounting and hooks.

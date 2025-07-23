@@ -10,17 +10,17 @@ The core framework for building modular, type-safe Chrome Extensions with a flue
 
 ## Installation
 
-```bash
-npm install argonite-core
-```
 
+```bash
+npm install @argonite/core
+```
 
 ## Usage Example
 
 Create a new file at `src/main.ts`:
 
 ```ts
-import { Extension, PopupEntry, SchedulerService } from 'argonite-core';
+import { Extension, PopupEntry, SchedulerService } from '@argonite/core';
 
 // 1. Create your extension instance
 const extension = new Extension({ name: 'My Extension', version: '1.0.0' });
@@ -43,7 +43,11 @@ extension.setPopup(
 export default extension;
 ```
 
-In your project, use `vite-plugin-argonite` and follow the [packaging guide](./docs/07-packaging.md) for manifest and build setup.
+
+For more advanced usage, see [docs/USAGE.md](./docs/USAGE.md).
+
+
+In your project, use `@argonite/vite-plugin-argonite` and follow the [packaging guide](./docs/07-packaging.md) for manifest and build setup.
 
 ---
 
