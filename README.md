@@ -1,54 +1,19 @@
-# argonite-core
+# Argonite Core
 
-The core framework for building modular, type-safe Chrome Extensions with a fluent API and modern best practices. Designed for use with Vite and TypeScript.
+Argonite Core is a **runtime-first framework** for modeling Chrome extensions as
+explicit systems rather than collections of scripts.
 
-## Features
-- Fluent API for extension setup
-- Modular services and entrypoints
-- ESM-only, TypeScript-first
-- Integrates seamlessly with Vite via vite-plugin-argonite
+It defines:
+- runtime execution contexts
+- authority and directionality rules
+- system-owned actors
+- safe boundaries for developer logic
 
-## Installation
+Argonite Core focuses exclusively on **runtime behavior**.
+Build-time concerns, filesystem structure, and tooling are intentionally out of scope.
 
+This repository is guided by the architectural invariants defined in
+[`SPECIFICATION.md`](./SPECIFICATION.md).
 
-```bash
-npm install @argonite/core
-```
-
-## Usage Example
-
-Create a new file at `src/main.ts`:
-
-```ts
-import { Extension, PopupEntry, SchedulerService } from '@argonite/core';
-
-// 1. Create your extension instance
-const extension = new Extension({ name: 'My Extension', version: '1.0.0' });
-
-// 2. Add a background service (e.g., a scheduler)
-extension.addService(
-  new SchedulerService('refresh', '*/5 * * * *', () => {
-    // Your scheduled task logic here
-  })
-);
-
-// 3. Set up a popup UI entry
-extension.setPopup(
-  new PopupEntry('popup.html', (container) => {
-    container.textContent = 'Hello from Popup!';
-  })
-);
-
-// 4. Export your extension for use in manifest and build config
-export default extension;
-```
-
-
-For more advanced usage, see [docs/USAGE.md](./docs/USAGE.md).
-
-
-In your project, use `@argonite/vite-plugin-argonite` and follow the [packaging guide](./docs/07-packaging.md) for manifest and build setup.
-
----
-
-For more details, see the [documentation](./docs/).
+Implementation details are deliberately minimal and free to evolve, as long as
+they preserve the constraints and guarantees described in the specification.
