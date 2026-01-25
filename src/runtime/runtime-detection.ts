@@ -2,9 +2,9 @@
 // Only what is required for runtime context validation
 
 export enum RuntimeContext {
-  Background = 'background',
-  Content = 'content',
-  Page = 'page',
+  Background = "background",
+  Content = "content",
+  Page = "page",
 }
 
 /**
@@ -13,12 +13,12 @@ export enum RuntimeContext {
 export function isBackgroundContext(): boolean {
   // Service worker global scope: self.registration, chrome.runtime, not window/document
   return (
-    typeof self !== 'undefined' &&
-    typeof chrome !== 'undefined' &&
+    typeof self !== "undefined" &&
+    typeof chrome !== "undefined" &&
     !!chrome.runtime &&
-    typeof window === 'undefined' &&
-    typeof document === 'undefined' &&
-    typeof self.registration !== 'undefined'
+    typeof window === "undefined" &&
+    typeof document === "undefined" &&
+    "registration" in self
   );
 }
 
@@ -28,14 +28,14 @@ export function isBackgroundContext(): boolean {
 export function isContentContext(): boolean {
   // Content scripts: window, document, chrome.runtime, not chrome.extension.getBackgroundPage
   return (
-    typeof window !== 'undefined' &&
-    typeof document !== 'undefined' &&
-    typeof chrome !== 'undefined' &&
+    typeof window !== "undefined" &&
+    typeof document !== "undefined" &&
+    typeof chrome !== "undefined" &&
     !!chrome.runtime &&
     // Not a page context
-    typeof window.chrome !== 'undefined' &&
-    typeof window.chrome.extension !== 'undefined' &&
-    typeof window.chrome.extension.getBackgroundPage === 'undefined'
+    typeof window.chrome !== "undefined" &&
+    typeof window.chrome.extension !== "undefined" &&
+    typeof window.chrome.extension.getBackgroundPage === "undefined"
   );
 }
 
@@ -45,13 +45,13 @@ export function isContentContext(): boolean {
 export function isPageContext(): boolean {
   // Extension pages: window, document, chrome.runtime, chrome.extension.getBackgroundPage exists
   return (
-    typeof window !== 'undefined' &&
-    typeof document !== 'undefined' &&
-    typeof chrome !== 'undefined' &&
+    typeof window !== "undefined" &&
+    typeof document !== "undefined" &&
+    typeof chrome !== "undefined" &&
     !!chrome.runtime &&
-    typeof window.chrome !== 'undefined' &&
-    typeof window.chrome.extension !== 'undefined' &&
-    typeof window.chrome.extension.getBackgroundPage === 'function'
+    typeof window.chrome !== "undefined" &&
+    typeof window.chrome.extension !== "undefined" &&
+    typeof window.chrome.extension.getBackgroundPage === "function"
   );
 }
 
@@ -62,5 +62,7 @@ export function detectRuntimeContext(): RuntimeContext {
   if (isBackgroundContext()) return RuntimeContext.Background;
   if (isContentContext()) return RuntimeContext.Content;
   if (isPageContext()) return RuntimeContext.Page;
-  throw new Error('Argonite Core: Unable to detect valid Chrome extension runtime context.');
+  throw new Error(
+    "Argonite Core: Unable to detect valid Chrome extension runtime context.",
+  );
 }

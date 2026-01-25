@@ -13,9 +13,12 @@ export class ContentRuntime {
     if (this.entryMounted) {
       throw new Error("Argonite Core: ContentRuntime entry already mounted");
     }
+
     this.entryMounted = true;
-    if (typeof entry.mount === "function") {
-      entry.mount();
+    entry.runtime = this;
+
+    if (typeof entry.register === "function") {
+      entry.register();
     }
   }
 }

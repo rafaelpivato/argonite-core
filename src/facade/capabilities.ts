@@ -1,2 +1,2 @@
-export { MessagingCapability } from "../capabilities/messaging-capability";
-export { StorageCapability } from "../capabilities/storage-capability";
+export type { MessagingCapability } from "../capabilities/messaging-capability";
+export type { StorageCapability } from "../capabilities/storage-capability";

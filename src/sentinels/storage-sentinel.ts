@@ -19,7 +19,12 @@ export class StorageSentinel {
           if (chrome.runtime.lastError) {
             reject(new Error(chrome.runtime.lastError.message));
           } else {
-            resolve(result[key]);
+            const value = result[key];
+            if (typeof value === "undefined") {
+              resolve(undefined);
+            } else {
+              resolve(value as T);
+            }
           }
         });
       } catch (err) {
