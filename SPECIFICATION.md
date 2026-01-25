@@ -1,5 +1,11 @@
 # Argonite Core — Specification
 
+**Status:** Frozen  
+**Scope:** Runtime architecture and invariants  
+**Audience:** Humans and LLMs (GitHub Copilot, agents, tooling)  
+
+---
+
 ## 1. Purpose
 
 Argonite Core is a **runtime system model** for Chrome extensions.
